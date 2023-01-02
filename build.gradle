@@ -1,0 +1,26 @@
+plugins {
+    id "java-library"
+}
+
+repositories {
+    maven {url = "https://dl.bintray.com/qameta/maven-unstable/"}
+    mavenCentral()
+}
+
+def selenideVersion = "6.10.3"
+
+dependencies {
+    testImplementation(
+            "org.aspectj:aspectjweaver:1.9.6",
+            "com.codeborne:selenide:$selenideVersion",
+            "io.rest-assured:rest-assured:5.3.0",
+            "org.aeonbits.owner:owner:1.0.12")
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = "UTF-8"
+}
+
+test {
+    useJUnitPlatform()
+}
